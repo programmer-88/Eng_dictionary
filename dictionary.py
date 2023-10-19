@@ -7,10 +7,10 @@ dictionary = json.load(open("data.json"))
 def translate(word):
     word = word.lower()
     if word in dictionary:
-            return dictionary[word]
+            return '\n'.join(dictionary[word])
 
     else:
-        return get_closest(word)
+        return '\n'.join(get_closest(word))
     
 # chexk if there is a word that nearly matches
 def get_closest(word):
