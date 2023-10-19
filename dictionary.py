@@ -8,4 +8,8 @@ def translate(word):
 
 word = input("Enter word: ")
 
-print(str(translate(word)))
+if word in dictionary:
+    print(str(translate(word)))
+
+else:
+    print("{:s} is not a valid word !".format(word))
