@@ -11,6 +11,9 @@ def translate(word):
     
     elif word.title() in dictionary:
          return dictionary[word.title()]
+    
+    elif word.upper() in dictionary:
+         return dictionary[word.upper()]
 
     else:
         return get_closest(word)
