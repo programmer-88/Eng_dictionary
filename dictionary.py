@@ -7,13 +7,22 @@ dictionary = json.load(open("data.json"))
 def translate(word):
     word = word.lower()
     if word in dictionary:
-            return '\n'.join(dictionary[word])
+            return dictionary[word]
+    
+    elif word.title() in dictionary:
+         return dictionary[word.title()]
 
     else:
-        return '\n'.join(get_closest(word))
+        return get_closest(word)
     
 # chexk if there is a word that nearly matches
 def get_closest(word):
+    if word.lower() in dictionary:
+         return dictionary[word.lower()]
+    
+    if word[0].isupper() and word in dictionary:
+         return dictionary[word]
+
     close_match = get_close_matches(word, dictionary.keys(), cutoff = 0.8)
     
     if close_match:
@@ -33,4 +42,11 @@ def get_closest(word):
          return "{:s} does not exist. Please double check it.".format(word)
 word = input("Enter word: ")
 
-print(translate(word))
+definition =(translate(word))
+
+if type(definition) == list:
+     for i in definition:
+          print(i)
+
+else:
+     print(definition)
